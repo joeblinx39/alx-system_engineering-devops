@@ -1,0 +1,3 @@
+#!/bin/bash
+declare -A a; while read l; do a[$(echo $l | awk '{print $1}')]=$((${a[$(echo $l | awk '{print $1}')]} + 1)); done < $1; for i in "${!a[@]}"; do echo "$i ${a[$i]}"; done | sort -k2,2nr | awk 'NR<=11 {print $1 " - " $2 " requests"}'
+
